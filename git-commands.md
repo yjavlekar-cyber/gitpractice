@@ -16,4 +16,4 @@ Thats why git is called VCS (Version control system).
 ---git log/git log --oneline0- lets us check the commit history it shows the changes made earlier with details like who made those change which can be identified through username.
 
 
-
+Above are the basic git commands one should know.
