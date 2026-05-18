@@ -17,3 +17,11 @@ Thats why git is called VCS (Version control system).
 
 
 Above are the basic git commands one should know.
+
+DAY-2 GIT COMMANDS BRANCHING-
+1.git branch- to list down all the branches.
+2.git branch newbranch- To create new branch.
+3.git switch newbranch/git checkout newbranch- To switch into branch.
+4.git checkout -b newbranch- To create new branch and switch it immedietly.
+5.git branch -d(soft)/-D(hard) branchname- To delete branch.
+6.
