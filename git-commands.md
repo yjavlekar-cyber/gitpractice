@@ -29,3 +29,7 @@ DAY-2 GIT COMMANDS BRANCHING-
 8.git remote -v- To check the links are showing our not in local.
 9.git remote set-url origin sshlink- to connect through ssh where it will not ask for username and all while pushing.
 
+Origin-This is our remote repo which sometimes can be forked from company's code repo in order to be updated with the company code changes after forking once we cam add the upstream url and then directly pull from company source.
+add upstream url -  git remote add upstream https://github.com/microsoft/vscode.git
+ then
+  git pull upstream main
