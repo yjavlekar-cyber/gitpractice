@@ -36,3 +36,35 @@ add upstream url -  git remote add upstream https://github.com/microsoft/vscode.
 
 
 Deleted unwanted info
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+new
