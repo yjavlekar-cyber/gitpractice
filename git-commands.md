@@ -25,5 +25,7 @@ DAY-2 GIT COMMANDS BRANCHING-
 4.git checkout -b newbranch- To create new branch and switch it immedietly.
 5.git branch -d(soft)/-D(hard) branchname- To delete branch.
 6.git branch -m master main- to change local master name into man.
-7.git remote add origin- To connect remote to local.
+7.git remote add origin http- To connect remote to local.
 8.git remote -v- To check the links are showing our not in local.
+9.git remote set-url origin sshlink- to connect through ssh where it will not ask for username and all while pushing.
+
