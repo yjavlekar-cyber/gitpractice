@@ -33,9 +33,6 @@ Origin-This is our remote repo which sometimes can be forked from company's code
 add upstream url -  git remote add upstream https://github.com/microsoft/vscode.git
  then
   git pull upstream main
-*this are the changes made to practice of git merge
 
-*another change.
- This the real change from actualsignup 
 
-*to check signup
+Deleted unwanted info
