@@ -35,13 +35,35 @@ add upstream url -  git remote add upstream https://github.com/microsoft/vscode.
   git pull upstream main
 
 
-Deleted unwanted info
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+DAY-3
+git merge feature-signup- so basically you are in main branch and you are merging another branch called feature-signup into main.
+
+fastforward- makes linear commit history.
+commit merge- if the branch in which we are merging has gone forward with its commit history than fastforward is not possible hence git does commit merge where we can see visually two seprate commit history of two seprate branches
+
+
+
+
+Feature-profile branch added
 
 
 
@@ -68,3 +90,4 @@ Deleted unwanted info
 
 
 new
+>>>>>>> main
