@@ -70,7 +70,7 @@ Feature-profile branch added
 
 
 
-
+to check squash and merge usage
 
 
 
