@@ -1,71 +1,200 @@
-
-##SETUP AND CONFIG
-
----git --version- Tells what version of git is installed.
-
----git config --global user.name "Yogesh Jawlekar"-To set username for commit history.
----git config --global user.email "yjawlekar@gmel.com"-To set email of the username to list in commit history.
-
-
-##BASIC WORKFLOW
----git init:Git init lets us intialize the local repo into a git repository to use it further to push or pull from remote repo.
----git add filename-lets us add the file into staging.
----git status-lets us check the status of the file if red then unstaged if green staged.
----git commit -m "commit message"-By this command we commit our changes into the git commit means basically keeping record of the changes.
-Thats why git is called VCS (Version control system).
----git log/git log --oneline0- lets us check the commit history it shows the changes made earlier with details like who made those change which can be identified through username.
-
-
-Above are the basic git commands one should know.
-
-DAY-2 GIT COMMANDS BRANCHING-
-1.git branch- to list down all the branches.
-2.git branch newbranch- To create new branch.
-3.git switch newbranch/git checkout newbranch- To switch into branch.
-4.git checkout -b newbranch- To create new branch and switch it immedietly.
-5.git branch -d(soft)/-D(hard) branchname- To delete branch.
-6.git branch -m master main- to change local master name into man.
-7.git remote add origin http- To connect remote to local.
-8.git remote -v- To check the links are showing our not in local.
-9.git remote set-url origin sshlink- to connect through ssh where it will not ask for username and all while pushing.
-
-Origin-This is our remote repo which sometimes can be forked from company's code repo in order to be updated with the company code changes after forking once we cam add the upstream url and then directly pull from company source.
-add upstream url -  git remote add upstream https://github.com/microsoft/vscode.git
- then
-  git pull upstream main
-
-
-DAY-3
-git merge feature-signup- so basically you are in main branch and you are merging another branch called feature-signup into main.
-
-fastforward- makes linear commit history.
-commit merge- if the branch in which we are merging has gone forward with its commit history than fastforward is not possible hence git does commit merge where we can see visually two seprate commit history of two seprate branches
-
-
-Remote (push, pull, fetch, clone, fork)
-1.git push origin main- to push code from local to remote
-2.git pull origin main - to pull from remote
-3. git clone httpslink - to pull the repo from remote to local
-4.forking is basically cloning but from github repo into our github.
-
-Merge
-1.git merge feature-login - to merge feature branch into main
-2.git rebase main - to rebase the branch onto main branch or anyother branch.
-3.git merge main --squash - to squash diff commits in one single commit we can use squash one squashed we will get the file in git status that we have to add and commit with new commit message.
-4.git stash - to save the umcommited changes whil switching the branches
-5.git stash pop- once we are back to the branch we can do git stash pop to get the file on which we are working.
-6.git stash list - If there are are multiple stashes this will list the stashes.
-7.git stash apply stash@{0}- To apply the specific stash from the stash list
-8.git cherry-pick commit id- to cherry pick one particular commit from commit histroy.
-
-Reset
-git reset --soft HEAD~1 - to delete the last one commit.
-
--- soft = this deletes the commit.
--- mixed = This deletes the commit takes the file back to unstaged cateogry but keeps the file as it is
--- hard = Hard deletes all three the commit,gets file to unstaged and modifys the file to the stage before that particular deleted commit.
-
-Revert
-git revert commit id- to revert the commit.
-
-
+# 💻 Git & GitHub Complete Command Reference Cheat Sheet
+A comprehensive, structured guide to Git version control commands, workflows, branching strategies, stashing, and repository recovery.
+---
+## ⚙️ 1. Setup & Configuration
+Configure Git with your developer identity to ensure commit logs correctly attribute your work.
+```bash
+# Verify your Git installation and version
+git --version
+# Configure your global commit username
+git config --global user.name "Yogesh Jawlekar"
+# Configure your global commit email address
+git config --global user.email "yjawlekar@gmail.com"
+```
+---
+## 🔄 2. Basic Workflow
+The foundational cycle for tracking project file changes locally.
+```bash
+# Initialize a local directory as a Git repository (.git)
+git init
+# Check the status of files (Staged, Unstaged, Untracked)
+# - Red indicates unstaged/untracked modifications
+# - Green indicates files successfully staged and ready to commit
+git status
+# Stage a specific file for the next commit
+git add <filename>
+# Stage all modified and new files in the directory
+git add .
+# Record staged snapshots into your commit history
+git commit -m "feat: commit description message"
+# Display the repository commit history logs
+git log
+# Display commit logs in a concise, single-line format
+git log --oneline
+```
+> [!NOTE]
+> **What is Version Control?**
+> A Version Control System (VCS) maintains records of changes over time, allowing you to recall specific versions later, compare updates, and collaborate without losing progress.
+---
+## 🌿 3. Branching & Local Management
+Isolate feature implementations, bug fixes, or experimental code from the main codebase.
+```bash
+# List all local branches (active branch is marked with *)
+git branch
+# Create a new local branch
+git branch <branch-name>
+# Switch to an existing branch
+git switch <branch-name>
+# OR (older syntax):
+git checkout <branch-name>
+# Create a new branch and switch to it immediately
+git checkout -b <branch-name>
+# Delete a local branch safely (will warn if commits are unmerged)
+git branch -d <branch-name>
+# Force-delete a local branch (ignores merge warning checks)
+git branch -D <branch-name>
+# Rename the local 'master' branch to 'main'
+git branch -m master main
+```
+---
+## ☁️ 4. Remote Integration & Collaboration
+Connect your local codebase with remote platforms (like GitHub or GitLab) to share, backup, or synchronize code.
+```bash
+# Connect your local repository to a remote repository URL
+git remote add origin <remote-repository-url>
+# Check registered remote connection links and paths
+git remote -v
+# Update remote URL (e.g. swap HTTPS link for an SSH connection)
+git remote set-url origin <ssh-repository-url>
+# Push local commits to a remote repository
+git push origin <branch-name>
+# Pull and merge the latest remote commits into your active branch
+git pull origin <branch-name>
+# Download a copy of an existing remote repository to your local machine
+git clone <repository-url>
+```
+> [!TIP]
+> **What are Origin and Upstream?**
+> *   `origin` represents your personal remote copy (usually your forked repository).
+> *   `upstream` represents the primary source repository (e.g. the team or open-source project). 
+> 
+> To keep your fork synced with the main project:
+> ```bash
+> # Add the main repository as upstream
+> git remote add upstream https://github.com/microsoft/vscode.git
+> 
+> # Pull updates directly from the main codebase into your local branch
+> git pull upstream main
+> ```
+---
+## 🔀 5. Advanced Merging, Rebasing & Squashing
+Integrate histories, clean commit chains, or reconcile branches.
+### Merging vs. Rebasing
+*   **Git Merge**: Combines histories.
+    *   *Fast-Forward Merge*: Simply moves the main branch pointer forward to the new commits if no intervening commits occurred (maintains linear history).
+    *   *Commit Merge*: If both branches have progressed independently, Git does a commit merge where we can see visually two separate commit histories of two separate branches joined together.
+*   **Git Rebase**: Rewrites history. Re-applies local commits on top of the target branch's latest commit, maintaining a perfectly linear commit line.
+```bash
+# Merge a feature branch into your active branch
+git merge <feature-branch>
+# Rebase your active branch onto the target branch
+git rebase main
+# Squash multiple commits into a single unified commit before merging
+git merge main --squash
+```
+---
+## 📦 6. Stashing & Cherry-Picking
+Manage temporary progress or pull isolated changes across branches.
+```bash
+# Save uncommitted changes to a temporary stash stack and clear your workspace
+git stash
+# Restore and remove the most recently stashed changes
+git stash pop
+# List all stashed changes currently stored
+git stash list
+# Apply a specific stash from the list without removing it from stack
+git stash apply stash@{0}
+# Copy a single commit from another branch into your active branch
+git cherry-pick <commit-id>
+```
+---
+## 🚨 7. Undoing Changes: Reset vs. Revert
+Safely backtrack or undo mistakes in your repository.
+### Git Reset (Locally Undoing Commits)
+> [!CAUTION]
+> Git Reset rewrites local history. Avoid using reset on branches that have already been pushed to public/shared repositories.
+```bash
+# Delete the last local commit (HEAD~1) based on three safety levels:
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git reset --hard HEAD~1
+```
+|
+ Reset Level 
+|
+ Deletes Commit? 
+|
+ Unstages Files? 
+|
+ Modifies/Discards File Contents? 
+|
+|
+:---
+|
+:---:
+|
+:---:
+|
+:---
+|
+|
+**
+`--soft`
+**
+|
+**
+Yes
+**
+|
+ No 
+|
+ No (Keeps all file changes in staging zone) 
+|
+|
+**
+`--mixed`
+**
+|
+**
+Yes
+**
+|
+**
+Yes
+**
+|
+ No (Keeps all modifications, but unstaged) 
+|
+|
+**
+`--hard`
+**
+|
+**
+Yes
+**
+|
+**
+Yes
+**
+|
+**
+Yes (Permanently discards all file modifications)
+**
+|
+### Git Revert (Safely Reversing History)
+Revert creates a **new commit** that introduces the exact opposite changes of the target commit, safely reversing the history without erasing old logs. Safe for public branches.
+```bash
+# Revert a specific commit by creating a new reversing commit
+git revert <commit-id>
+```
